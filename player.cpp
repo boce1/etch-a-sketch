@@ -14,7 +14,7 @@ player::player(int x, int y, int width, int height)
     posRect.x = playerRect.x + playerRect.w / 2 - posRect.w / 2;
     posRect.y = playerRect.y + playerRect.h / 2 - posRect.h / 2;
 
-    speed = 3;
+    speed = 1;
 }
 
 player::draw(SDL_Renderer* renderer)

@@ -11,7 +11,7 @@ void clearScreen(SDL_Renderer* renderer, SDL_Event event);
 int main(int argc, char* argv[]) 
 {
     SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_Window *window = SDL_CreateWindow("hello world", 100, 100, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    SDL_Window *window = SDL_CreateWindow("hello world", 100, 100, WIDTH, HEIGHT, 0);
     if(window == NULL) 
     {
         return 1;
@@ -40,6 +40,8 @@ int main(int argc, char* argv[])
         //std::cout << nowTicks - lastTicks << std::endl;
         //std::cout << (nowTicks - lastTicks) / SDL_GetPerformanceFrequency() << std::endl;
         keyboardState = SDL_GetKeyboardState(NULL);
+        p.move(keyboardState, WIDTH, HEIGHT, deltaTime);
+        //std::cout << deltaTime << std::endl;
 
         drawScreen(renderer, p);
         if(SDL_PollEvent(&event)) 
@@ -50,7 +52,7 @@ int main(int argc, char* argv[])
             }
             clearScreen(renderer, event);
         }
-        p.move(keyboardState, WIDTH, HEIGHT, deltaTime);
+        
     }
 
     SDL_DestroyWindow(window);
@@ -66,6 +68,7 @@ void drawScreen(SDL_Renderer* renderer, player& p)
     p.draw(renderer);
     SDL_SetRenderDrawColor(renderer, 255,255,255,255);
     SDL_RenderPresent(renderer);
+    SDL_Delay(1);
 }
 
 void clearScreen(SDL_Renderer* renderer, SDL_Event event)
