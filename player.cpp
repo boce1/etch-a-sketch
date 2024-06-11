@@ -27,24 +27,25 @@ player::draw(SDL_Renderer* renderer)
 
 player::move(const Uint8* state, int windowWidth, int windowHeight, double deltaTime)
 {
+    double coefitient = 2;
     if (state[SDL_SCANCODE_W] && playerRect.y > 0) 
     {
-        playerRect.y -= (int)(speed * deltaTime / 2);
-        posRect.y -= (int)(speed * deltaTime / 2);
+        playerRect.y -= (int)(speed * deltaTime / coefitient);
+        posRect.y -= (int)(speed * deltaTime / coefitient);
     }
     if (state[SDL_SCANCODE_S] && playerRect.y + playerRect.h < windowHeight) 
     {
-        playerRect.y += (int)(speed * deltaTime / 2);
-        posRect.y += (int)(speed * deltaTime / 2);
+        playerRect.y += (int)(speed * deltaTime / coefitient);
+        posRect.y += (int)(speed * deltaTime / coefitient);
     }
     if (state[SDL_SCANCODE_A] && playerRect.x > 0) 
     {
-        playerRect.x -= (int)(speed * deltaTime / 2);
-        posRect.x -= (int)(speed * deltaTime / 2);
+        playerRect.x -= (int)(speed * deltaTime / coefitient);
+        posRect.x -= (int)(speed * deltaTime / coefitient);
     }
     if (state[SDL_SCANCODE_D] && playerRect.x + playerRect.w < windowWidth) 
     {
-        playerRect.x += (int)(speed * deltaTime / 2);
-        posRect.x += (int)(speed * deltaTime / 2);
+        playerRect.x += (int)(speed * deltaTime / coefitient);
+        posRect.x += (int)(speed * deltaTime / coefitient);
     }
 }
